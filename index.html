@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RASHID TECH</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Cairo',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#ffffff;
+overflow-x:hidden;
+color:#111;
+}
+
+/* خلفية متحركة مستقبلية */
+
+.bg{
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+overflow:hidden;
+z-index:-1;
+background:
+radial-gradient(circle at top right,#2563eb22,transparent 30%),
+radial-gradient(circle at bottom left,#60a5fa22,transparent 30%);
+}
+
+.line{
+position:absolute;
+width:2px;
+height:220px;
+background:linear-gradient(transparent,#2563eb,transparent);
+animation:move 7s linear infinite;
+opacity:0.4;
+}
+
+.line:nth-child(1){
+right:10%;
+animation-delay:0s;
+}
+
+.line:nth-child(2){
+right:40%;
+height:300px;
+animation-delay:2s;
+}
+
+.line:nth-child(3){
+left:20%;
+height:180px;
+animation-delay:1s;
+}
+
+@keyframes move{
+0%{
+transform:translateY(-300px);
+}
+100%{
+transform:translateY(120vh);
+}
+}
+
+/* نافبار */
+
+nav{
+position:fixed;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+width:92%;
+max-width:1300px;
+padding:18px 30px;
+background:rgba(255,255,255,0.65);
+backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,0.5);
+border-radius:25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:999;
+box-shadow:0 10px 40px rgba(0,0,0,0.08);
+}
+
+.logo{
+font-size:30px;
+font-weight:900;
+background:linear-gradient(90deg,#2563eb,#60a5fa);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+nav ul{
+display:flex;
+gap:30px;
+list-style:none;
+}
+
+nav ul li{
+cursor:pointer;
+font-weight:700;
+position:relative;
+transition:0.3s;
+}
+
+nav ul li::after{
+content:'';
+position:absolute;
+bottom:-5px;
+right:0;
+width:0%;
+height:3px;
+background:#2563eb;
+transition:0.3s;
+border-radius:20px;
+}
+
+nav ul li:hover::after{
+width:100%;
+}
+
+/* الصفحة الرئيسية */
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:140px 8%;
+gap:80px;
+flex-wrap:wrap;
+}
+
+.hero-text{
+flex:1;
+min-width:320px;
+animation:fadeUp 1s ease;
+}
+
+.badge{
+display:inline-block;
+padding:10px 18px;
+background:#eff6ff;
+border:1px solid #bfdbfe;
+border-radius:40px;
+font-size:15px;
+font-weight:700;
+color:#2563eb;
+margin-bottom:25px;
+}
+
+.hero-text h1{
+font-size:78px;
+line-height:1.1;
+font-weight:900;
+margin-bottom:25px;
+}
+
+.hero-text h1 span{
+background:linear-gradient(90deg,#2563eb,#60a5fa);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero-text p{
+font-size:21px;
+line-height:2;
+color:#444;
+max-width:700px;
+margin-bottom:35px;
+}
+
+/* الأزرار */
+
+.buttons{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:17px 34px;
+border:none;
+border-radius:18px;
+font-size:18px;
+font-weight:700;
+cursor:pointer;
+transition:0.35s;
+}
+
+.primary{
+background:linear-gradient(90deg,#2563eb,#3b82f6);
+color:white;
+box-shadow:0 15px 35px rgba(37,99,235,0.3);
+}
+
+.primary:hover{
+transform:translateY(-8px) scale(1.03);
+}
+
+.secondary{
+background:white;
+border:2px solid #e5e7eb;
+}
+
+.secondary:hover{
+background:#f9fafb;
+transform:translateY(-5px);
+}
+
+/* البطاقة المستقبلية */
+
+.future-card{
+flex:1;
+min-width:320px;
+position:relative;
+}
+
+.glass{
+background:rgba(255,255,255,0.7);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,0.5);
+padding:40px;
+border-radius:35px;
+box-shadow:0 20px 50px rgba(0,0,0,0.08);
+position:relative;
+overflow:hidden;
+animation:float 4s ease-in-out infinite;
+}
+
+.glass::before{
+content:'';
+position:absolute;
+width:250px;
+height:250px;
+background:#2563eb;
+opacity:0.1;
+border-radius:50%;
+top:-120px;
+left:-120px;
+}
+
+.glass h2{
+font-size:36px;
+margin-bottom:20px;
+}
+
+.glass p{
+font-size:18px;
+line-height:2;
+color:#444;
+}
+
+/* احصائيات */
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+padding:50px 8%;
+}
+
+.stat{
+background:white;
+padding:35px;
+border-radius:28px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,0.06);
+transition:0.4s;
+}
+
+.stat:hover{
+transform:translateY(-10px);
+}
+
+.stat h3{
+font-size:50px;
+color:#2563eb;
+margin-bottom:10px;
+}
+
+.stat p{
+font-size:18px;
+color:#555;
+}
+
+/* قسم الخدمات */
+
+.section{
+padding:120px 8%;
+}
+
+.title{
+font-size:55px;
+font-weight:900;
+text-align:center;
+margin-bottom:70px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.card{
+background:white;
+padding:40px;
+border-radius:30px;
+position:relative;
+overflow:hidden;
+box-shadow:0 10px 35px rgba(0,0,0,0.06);
+transition:0.4s;
+}
+
+.card:hover{
+transform:translateY(-12px);
+}
+
+.card::before{
+content:'';
+position:absolute;
+top:0;
+right:0;
+width:100%;
+height:6px;
+background:linear-gradient(90deg,#2563eb,#60a5fa);
+}
+
+.icon{
+font-size:50px;
+margin-bottom:20px;
+}
+
+.card h3{
+font-size:30px;
+margin-bottom:15px;
+}
+
+.card p{
+font-size:18px;
+line-height:2;
+color:#555;
+}
+
+/* الفوتر */
+
+footer{
+padding:50px;
+text-align:center;
+background:#f8fafc;
+font-size:18px;
+margin-top:80px;
+}
+
+/* انيميشن */
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes float{
+0%{
+transform:translateY(0px);
+}
+50%{
+transform:translateY(-15px);
+}
+100%{
+transform:translateY(0px);
+}
+}
+
+@media(max-width:900px){
+
+.hero-text h1{
+font-size:52px;
+}
+
+nav{
+flex-direction:column;
+gap:20px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg">
+<div class="line"></div>
+<div class="line"></div>
+<div class="line"></div>
+</div>
+
+<nav>
+
+<div class="logo">
+RASHID TECH
+</div>
+
+<ul>
+<li onclick="window.scrollTo(0,0)">الرئيسية</li>
+<li onclick="document.getElementById('services').scrollIntoView()">الخدمات</li>
+<li onclick="window.open('https://youtube.com/@airshidslahy?si=JmfF0JasUa_0oJXA')">القناة</li>
+</ul>
+
+</nav>
+
+<section class="hero">
+
+<div class="hero-text">
+
+<div class="badge">
+🚀 مستقبل التقنية يبدأ هنا
+</div>
+
+<h1>
+رشيد الصلاحي <br>
+<span>هندسة • تطوير • إبداع</span>
+</h1>
+
+<p>
+واجهة مستقبلية احترافية تجمع بين
+الهندسة البرمجية، تصميم الواجهات،
+وتعديل التطبيقات برسوم متحركة
+وتجربة بصرية حديثة تشبه مواقع الشركات العالمية.
+</p>
+
+<div class="buttons">
+
+<button class="btn primary"
+onclick="window.open('https://youtube.com/@airshidslahy?si=JmfF0JasUa_0oJXA')">
+زيارة القناة
+</button>
+
+<button class="btn secondary"
+onclick="document.getElementById('services').scrollIntoView()">
+استعراض الخدمات
+</button>
+
+</div>
+
+</div>
+
+<div class="future-card">
+
+<div class="glass">
+
+<h2>
+الهندسة وتطوير التطبيقات
+</h2>
+
+<p>
+تطوير التطبيقات الحديثة يحتاج إلى
+تصميم واجهات ذكية وسريعة،
+مع تحسين الأداء وتجربة المستخدم،
+وإضافة التأثيرات البصرية المتقدمة
+لصناعة تجربة احترافية متكاملة.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="stats">
+
+<div class="stat">
+<h3>4+</h3>
+<p>واجهات احترافية</p>
+</div>
+
+<div class="stat">
+<h3>100%</h3>
+<p>تصميم عصري</p>
+</div>
+
+<div class="stat">
+<h3>∞</h3>
+<p>أفكار مستقبلية</p>
+</div>
+
+<div class="stat">
+<h3>24/7</h3>
+<p>إبداع مستمر</p>
+</div>
+
+</section>
+
+<section class="section" id="services">
+
+<h2 class="title">
+الخدمات التقنية
+</h2>
+
+<div class="cards">
+
+<div class="card">
+<div class="icon">🎨</div>
+<h3>تصميم واجهات</h3>
+<p>
+تصميم UI/UX احترافي
+بأسلوب عصري وحركات سلسة.
+</p>
+</div>
+
+<div class="card">
+<div class="icon">⚡</div>
+<h3>تعديل التطبيقات</h3>
+<p>
+تحسين الأداء وإضافة
+مميزات احترافية حديثة.
+</p>
+</div>
+
+<div class="card">
+<div class="icon">💻</div>
+<h3>برمجة متطورة</h3>
+<p>
+إنشاء مشاريع قوية
+بتقنيات حديثة ومتقدمة.
+</p>
+</div>
+
+<div class="card">
+<div class="icon">🚀</div>
+<h3>تجربة مستقبلية</h3>
+<p>
+رسوم متحركة وتأثيرات
+تشبه مواقع الشركات العالمية.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 RASHID TECH — جميع الحقوق محفوظة
+
+</footer>
+
+</body>
+</html>
